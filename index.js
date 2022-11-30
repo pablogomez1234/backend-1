@@ -1,7 +1,8 @@
 const express = require('express');
 const Contenedor = require('./contenedor');
 const app = express();
-const PORT = 8080;
+
+
 
 const server = app.listen(process.env.PORT || PORT, () => {
   console.log(`server listening on PORT ${PORT}`);
@@ -21,4 +22,10 @@ app.get('/productoRandom', async (req, res) => {
   let numeroRandom = Match.floor(Match.random() = productos.length);
   res.send(productos[numeroRandom]);
 });
+
+
+
+app.listen(8080, () => {
+  console.log("El servidor está inicializado en el puerto 8080");
+ });
  
