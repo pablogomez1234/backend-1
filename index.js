@@ -10,7 +10,7 @@ const server = app.listen(process.env.PORT || PORT, () => {
 
 server.on('error', err => console.log(`error: ${err}`));
 
-const products = new Contenedor('products.txt'),
+const products = new Contenedor('products.txt');
 
 app.get('/productos', async (req, res) => {
   const productos = await products.getAll();
@@ -23,8 +23,7 @@ app.get('/productoRandom', async (req, res) => {
   res.send(productos[numeroRandom]);
 });
 
-
-
+const PORT = 8080;
 app.listen(8080, () => {
   console.log("El servidor está inicializado en el puerto 8080");
  });
