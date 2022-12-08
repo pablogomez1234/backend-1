@@ -23,7 +23,7 @@ app.get('/productoRandom', async (req, res) => {
   res.send(productos[numeroRandom]);
 });
 
-const PORT = 8080;
+
 app.listen(8080, () => {
   console.log("El servidor está inicializado en el puerto 8080");
  });
