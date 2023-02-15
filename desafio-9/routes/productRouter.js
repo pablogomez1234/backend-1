@@ -6,7 +6,6 @@ const { Router } = express
 const productRouter = Router() 
 
 
-
 /* ------------------ router productos ----------------- */
 //------------- get productos
 productRouter.get('/productos', async (req, res) => {
@@ -21,6 +20,7 @@ productRouter.get('/productos/:id', async (req, res) => {
   product ? res.json( product )
     : res.status(404).send({ error: 'producto no encontrado'})
 })
+
 
 //--------------------- post producto
 productRouter.post('/productos', async (req, res) => {
@@ -58,7 +58,20 @@ productRouter.delete('/productos/:id', async (req, res) => {
 //------------- get productos
 productRouter.get('/productos-test', async (req, res) => {
   const allProducts = await mock5.getAll()
-  res.json( allProducts )
+
+  let tabla = '<table>'
+  tabla += '<tr><th>Producto</th><th>Precio</th><th>Imagen</th></tr>'
+  allProducts.forEach((fila) => {
+    tabla += `<tr>
+                <td>${fila.title}</td>
+                <td>${fila.price}</td>
+                <td><img src="${fila.thumbnail}" alt="${fila.title}" width="64" heigth="48"></td>
+              </tr>`
+  })
+  tabla += '</table>'
+
+  res.send(tabla)
+
 })
 
 
